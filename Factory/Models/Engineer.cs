@@ -13,7 +13,8 @@ namespace Factory.Models
         }
         
         public int EngineerId { get ; set; }
-        public string EngineerName { get; set; }
+        public string EngineerFirstName { get; set; }
+        public string EngineerLastName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
