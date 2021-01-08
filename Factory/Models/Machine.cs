@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Factory.Models
 {
@@ -15,7 +17,7 @@ namespace Factory.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        public bool InstallDate { get; set; }
+        public DateTime InstallDate { get; set; }
 
 
         public virtual ICollection<EngineerMachine> Engineers { get; set; }
