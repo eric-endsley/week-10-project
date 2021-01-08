@@ -1,0 +1,22 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h3>Add a certification for: @Model.EngineerFirstName @Model.EngineerLastName</h3>
+<br>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.EngineerId)
+
+    @Html.Label("Select Machine Certification:")<br>
+    @Html.DropDownList("MachineId")<br>
+
+    <input type="submit" Value="Save" class="btn btn-default" />
+}
+
+<br> 
+<p>@Html.ActionLink("Back to Engineer Info Page", "Details", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Back to Engineer Directory", "Index")</p>
