@@ -22,10 +22,8 @@ else
             <li>@Html.ActionLink(@join.Machine.MachineName, "Machines", "Details", new { id = @join.Machine.MachineId })</li>
         }
     </ul>
-    
-    <br>
-    <p>@Html.ActionLink("Add a Machine Certification", "AddMachine", new { id = Model.EngineerId })</p>
-    <p>@Html.ActionLink("Return to Engineer Directory", "Index")</p>
-
-
 }
+
+<br>
+<p>@Html.ActionLink("Add a Machine Certification", "AddMachine", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Return to Engineer Directory", "Index")</p>
