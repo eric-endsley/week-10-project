@@ -1,0 +1,24 @@
+@{
+    Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model Factory.Models.Engineer
+
+<h3>Input New Engineer Hire Information</h3>
+
+@using (Html.BeginForm())
+{
+    <p>First Name</p>
+    @Html.TextBoxFor(model => model.EngineerFirstName)
+
+    <p>Last Name</p>
+    @Html.TextBoxFor(model => model.EngineerLastName)
+
+    <p>Start Date</p>
+    @Html.TextBoxFor(model => model.HireDate, new { @type = "date" })
+    <br>
+    <input type="submit" value="Submit " class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Return to Engineer Directory", "Index")</p>
