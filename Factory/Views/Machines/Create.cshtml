@@ -1,0 +1,21 @@
+@{
+    Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model Factory.Models.Machine
+
+<h3>Input New Machine Information</h3>
+
+@using (Html.BeginForm())
+{
+    <p>Machine Name</p>
+    @Html.TextBoxFor(model => model.MachineName)
+
+    <p>Install Date</p>
+    @Html.TextBoxFor(model => model.InstallDate, new { @type = "date" })
+    <br>
+    <input type="submit" value="Submit " class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Return to Machine Directory", "Index")</p>
