@@ -4,3 +4,26 @@
 
 @using Factory.Models;
 @model Factory.Models.Machine
+
+<h3>Machine Certifications</h3>
+<h4>@Model.MachineName</h4>
+<h5>Installed On: @Html.DisplayFor(model => model.InstallDate)</h5>
+
+@if(Model.Engineers.Count == 0)
+{
+    <p>No employees are licensed to service this machine. Better hire someone quick!</p>
+}
+else
+{
+    <h5>Engineers Certified To Service This Machine:</h5>
+    <ul>
+        @foreach(var join in Model.Engineers)
+        {
+            <li>@Html.ActionLink(@join.Engineer.EngineerFirstName + " " + @join.Engineer.EngineerLastName, "Engineers", "Details", new { id = @join.Machine.MachineId })</li>
+        }
+    </ul>
+}
+
+<br>
+<p>@Html.ActionLink("Add a Licensed Engineer", "AddEngineer", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Return to Machine Directory", "Index")</p>
