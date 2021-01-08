@@ -10,9 +10,14 @@ namespace Factory.Controllers
     {
         private readonly FactoryContext _db;
 
-        public MachinesController(RegistrarContext db)
+        public MachinesController(FactoryContext db)
         {
             _db = db;
+        }
+
+        public ActionResult Index()
+        {
+            return View (_db.Machines.ToList());
         }
     }
 }
