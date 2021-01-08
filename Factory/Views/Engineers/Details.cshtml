@@ -1,0 +1,31 @@
+@{
+    Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model Factory.Models.Engineer;
+
+<h3>Engineer Certifications</h3>
+<h4>@Model.EngineerFirstName @Model.EngineerLastName</h4>
+<h5>Employee Since: @Html.DisplayFor(model => model.HireDate)</h5>
+
+@if(Model.Machines.Count == 0)
+{
+    <p>This employee is not certified to service any machines.</p>
+}
+else
+{
+    <h4>Machine Certifications</h4>
+    <ul>
+        @foreach(var join in Model.Machines)
+        {
+            <li>@Html.ActionLink(@join.Machine.MachineName, "Machines", "Details", new { id = @join.Machine.MachineId })</li>
+        }
+    </ul>
+    
+    <br>
+    <p>@Html.ActionLink("Add a Machine Certification", "AddMachine", new { id = Model.EngineerId })</p>
+    <p>@Html.ActionLink("Return to Engineer Directory", "Index")</p>
+
+
+}
