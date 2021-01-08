@@ -22,5 +22,18 @@ namespace Factory.Controllers
             engList.Sort((x, y) => string.Compare(x.EngineerLastName, y.EngineerLastName));
             return View(engList);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Engineer engineer)
+        {
+            _db.Engineers.Add(engineer);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
