@@ -2,6 +2,31 @@
     Layout = "_Layout";
 }
 
+@using Factory.Models;
+
 <h1>Factory Database</h1>
-<h3>@Html.ActionLink("View Engineers Directory", "Index", "Engineers")</h3>
-<h3>@Html.ActionLink("View Machine Database", "Index", "Machines")</h3>
+<div class="row">
+    <div class="col-6">
+        <h3>Engineers:</h3> 
+        @foreach(Engineer engineer in ViewBag.Engineers)
+        {
+            <ul>
+                <li>@Html.ActionLink($"{engineer.EngineerFirstName} {engineer.EngineerLastName}", "Details", "Engineers", new { id = engineer.EngineerId })</li>
+            </ul>
+        }
+        <h5>@Html.ActionLink("View Engineers Only", "Index", "Engineers")</h3>
+    </div>
+    <div class="col-6">
+        <h3>Machines:</h3>
+        @foreach(Machine machine in ViewBag.Machines)
+        {
+            <ul>
+                <li>@Html.ActionLink($"{machine.MachineName}","Details", "Machines",  new { id = machine.MachineId })</li>
+            </ul>
+        }
+        <h5>@Html.ActionLink("View Machines Only", "Index", "Machines")</h3>
+    </div>
+</div>
+
+
+
