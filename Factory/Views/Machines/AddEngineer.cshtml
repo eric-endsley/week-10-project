@@ -1,0 +1,22 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h3>Add a licensed engineer for: @Model.MachineName</h3>
+<br>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.MachineId)
+
+    @Html.Label("Select Engineer To Certify:")<br>
+    @Html.DropDownList("EngineerId")<br>
+
+    <input type="submit" Value="Save" class="btn btn-default" />
+}
+
+<br> 
+<p>@Html.ActionLink("Back to Machine Info Page", "Details", new { id = Model.MachineId })</p>
+<p>@Html.ActionLink("Back to Machine Directory", "Index")</p>
