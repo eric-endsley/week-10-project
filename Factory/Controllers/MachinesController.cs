@@ -1,8 +1,10 @@
+using Factory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
-using Factory.Models;
+
 
 namespace Factory.Controllers
 {
@@ -51,7 +53,14 @@ namespace Factory.Controllers
                     Text = s.EngineerFirstName + " " + s.EngineerLastName
                 })
                 .ToList();
-            ViewBag.EngineerId = new SelectList(engineers, "EngineerId", "Text" );
+            List<SelectListItem> db = new SelectList(engineers, "EngineerId", "Text" ).ToList();
+            SelectListItem blank = new SelectListItem () {
+                Value = "0",
+                Text = "--Select Engineer--"
+            };
+            db.Insert(0, blank);
+            ViewBag.EngineerId = new SelectList(db, "Value", "Text");
+
             return View(thisMachine);
         }
 

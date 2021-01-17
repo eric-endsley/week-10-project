@@ -1,10 +1,10 @@
+using Factory.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Factory.Models;
+
 
 namespace Factory.Controllers
 {
@@ -49,7 +49,13 @@ namespace Factory.Controllers
         public ActionResult AddMachine(int id)
         {
             var thisEng = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-            ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
+            List<SelectListItem> db = new SelectList(_db.Machines, "MachineId", "MachineName").ToList();
+            SelectListItem blank = new SelectListItem () {
+                Value = "0",
+                Text = "--Select Machine--"
+            };
+            db.Insert(0, blank);
+            ViewBag.MachineId = new SelectList(db, "Value", "Text");
             return View(thisEng);
         }
 
