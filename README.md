@@ -16,19 +16,19 @@ The user is also able to navigate to pages which host only a single list of engi
 
 ## Setup
 
-#### Install .NET Core
+### Install .NET Core
 
 1. This program is written in C# and requires the .NET Core to run. For PC users click [this link](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-2.2.203-windows-x64-installer) and follow the installation instructions. For Mac users click [this link](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-2.2.106-macos-x64-installer) and follow the installation instructions.
 
 2. Install dotnet script by entering the following command in your terminal: "dotnet tool install -g dotnet-script"
 
-#### Install MySQL
+### Install MySQL
 
 1. This program uses MySQL to store and manage data. Navigate to [this link](https://dev.mysql.com/downloads/file/?id=484919) and follow the installation instructions to install MySQL and MySQL Workbench.
 
 2. Be sure to make note of the password you create during the installation process, you will need to use this later on in the setup.
 
-#### Clone The Repository
+### Clone The Repository
 
 1.  Open the [Factory Database website](https://github.com/eric-endsley/week-10-project.git) by clicking the link or copy/pasting "https://github.com/eric-endsley/week-10-project.git" in the navigator bar of a web browser application.
 
@@ -39,21 +39,25 @@ The user is also able to navigate to pages which host only a single list of engi
 
 4.  Right click on the project directory and open it with VS Code or another code editor.
 
-#### Setup MySQL Database with Entity
+### Setup MySQL Database with Entity
+
+#### Option 1: Create Data Structure Code First From the Terminal:
 
 1. Navigate to the appsettings.json file within the /Factory subdirectory. Locate the line of code that states "pwd=epicodus" and overwrite epicodus with the password you created during installation of MySQL
 
 2. In your terminal, type the command "dotnet restore" followed by the command "dotnet ef database update". You have now created the data structure for this application.
 
-3. Open the program MySQL workbench which you installed earlier, enter the password that you setup during installation.
+#### Option 2: Import Data Structure Using MySQL Workbench GUI:
 
-4. Using the navigation bar select Server > Data Import.
+1. Open the program MySQL Workbench which you installed earlier and enter the password that you setup during installation.
 
-5. When prompted, select the option to "Import From Self Contained File" and select the file "eric_endsley_Db_export.sql" in the Factory.Solution folder.
+2. Using the navigation bar select Server > Data Import.
 
-6. In the dropdown labelled "Default Target Schema:", select "eric_endsley" or whatever you named your database in appsettings.json. Select all of the schema objects. Then click the "Start Import" button.
+3. When prompted, select the option to "Import From Self Contained File" and select the file "eric_endsley_Db_export.sql" in the Factory.Solution folder.
 
-#### Open the Webpage!
+4. In the dropdown labelled "Default Target Schema:", select "eric_endsley" or whatever you named your database in appsettings.json. Select all of the schema objects. Then click the "Start Import" button. You have now imported the data structure.
+
+### Open the Webpage!
 
 1. In the terminal, type the command "dotnet run".
 
