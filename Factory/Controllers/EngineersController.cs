@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Factory.Models;
 
 namespace Factory.Controllers
@@ -72,7 +73,13 @@ namespace Factory.Controllers
         public ActionResult Edit(int id)
         {
             var thisEng = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
-            ViewBag.MachineId = new SelectList(_db.Machine, "MachineId", "Name");
+            List<SelectListItem> db = new SelectList(_db.Machines, "MachineId", "MachineName").ToList();
+            SelectListItem blank = new SelectListItem () {
+                Value = "0",
+                Text = "--Select Machine--"
+            };
+            db.Insert(0, blank);
+            ViewBag.MachineId = new SelectList(db, "Value", "Text");
             return View(thisEng);
         }
         
